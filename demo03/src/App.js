@@ -5,6 +5,7 @@ import logo from './logo.svg';
 import './App.css';
 import Ex01 from './components/Ex01';
 import Ex02 from './components/Ex02';
+import Ex03 from './components/Ex03';
 
 //모든 컴포넌트(JS) 파일에는 함수가 하나 존재한다
 // - 함수가 하나의 화면 조각을 의미한다
@@ -25,6 +26,8 @@ function App() {
       <Ex01></Ex01>
       <hr></hr>
       <Ex02></Ex02>
+      <hr></hr>
+      <Ex03></Ex03>
     </>
   );
 }
