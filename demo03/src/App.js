@@ -9,6 +9,7 @@ import Ex03 from './components/Ex03';
 import Ex04 from './components/Ex04';
 import Ex05 from './components/Ex05';
 import Ex06 from './components/Ex06';
+import Ex07 from './components/Ex07';
 
 //모든 컴포넌트(JS) 파일에는 함수가 하나 존재한다
 // - 함수가 하나의 화면 조각을 의미한다
@@ -37,6 +38,8 @@ function App() {
       <Ex05></Ex05>
       <hr></hr>
       <Ex06></Ex06>
+      <hr></hr>
+      <Ex07></Ex07>
     </>
   );
 }
