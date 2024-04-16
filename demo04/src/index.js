@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+//기본적으로 제공되는 것 외에 추가할 라이브러리를 불러오는 코드
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootswatch/dist/cosmo/bootswatch.min.css";
+import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
