@@ -37,7 +37,7 @@ function Ex06() {
 
             총점 : {total} 점
             <br /><br />
-            평균 : {avg.toFixed(2)}점  {/* 평균 값을 소수점 2자리까지 표시 */}
+            평균 : {average.toFixed(2)}점  {/* 평균 값을 소수점 2자리까지 표시 */}
         </>
     );
 }
