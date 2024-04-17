@@ -1,24 +1,39 @@
 import logo from './logo.svg';
 import './App.css';
+import Menu from './components/Menu';
+import Home from './components/Home';
+import Ex01 from './components/Ex01';
+import Ex02 from './components/Ex02';
+import { Route, Routes } from 'react-router';
+import Ex03 from './components/Ex03';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {/* 메뉴 배치 */}
+      <Menu/>
+
+      {/* 메뉴를 눌렀을 때 나올 화면 배치 */}
+      <div className='container-fluid my-5 '>
+        <div className='row'>
+          <div className='col-sm-10 offset-sm-1'>
+            
+            {/* 
+                메뉴를 눌렀을 때 나올 화면 배치 
+                - path를 통해 주소를 설정
+                - element를 통해 연결될 화면을 설정
+            */}
+            <Routes>
+              <Route path='/' element={<Home/>}/>
+              <Route path='/ex01' element={<Ex01/>}/>
+              <Route path='/ex02' element={<Ex02/>}/>
+              <Route path='/ex03' element={<Ex03/>}/>
+            </Routes>
+
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 
