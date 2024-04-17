@@ -56,8 +56,14 @@ function Ex03(){
                             </tr>
                         </thead>
                         <tbody>
+                            {/* 
+                                map을 이용한 반복을 할 때
+                                생성하는 태그에 제어가 가능한 고유 식별자를 추가(key)
+
+                                안해도 구동은 되지만 지속적인 오류 + 순서 변환 안 됨
+                            */}
                             {items.map((item) => (
-                                <tr>
+                                <tr key={item.itemNo}>
                                     <td>{item.itemNo}</td>
                                     <td>{item.itemName}</td>
                                     <td>{item.itemPrice}원</td>
