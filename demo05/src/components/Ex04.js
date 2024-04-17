@@ -16,6 +16,11 @@ function Ex04() {
         {no:9, name:"호주", capital:"캔버라"},
         {no:10, name:"스페인", capital:"마드리드"},
     ]);
+    const [input, setInput] = useState({
+        no:"", 
+        name:"", 
+        capital:""
+    });
 
     //function(callback)
     // - const 함수명 = useCallback(함수, [연관항목]);
@@ -32,6 +37,40 @@ function Ex04() {
     const clearNations = useCallback(()=>{
         setNations([]);
     }, [nations]);
+
+    //등록화면에 입력이 발생하면 state를 갱신하기 위한 함수
+    //function changeInput(e){}
+    //const changeInput = (e) =>{};
+    const changeInput = useCallback((e)=>{
+        const name = e.target.name;
+        const value = e.target.value;
+        
+        setInput({
+            ...input,//나머지는 input값을 유지하고
+            [name] : value//name에 해당하는 필드만 value로 교체하세요!
+        });
+    }, [input]);
+    const clearInput = useCallback(() => {
+        //입력창을 지워라 === 값이 없는 객체로 바꿔라
+        //const choice = window.confirm("정말 지워?");
+        //if(choice == false) return;
+
+        setInput({
+            no : "",
+            name : "",
+            capital : ""
+        });
+    }, [input]);
+    //저장 === input의 데이터를 nations에 추가하고 input은 초기화
+    const saveInput = useCallback(()=>{
+        //input은 입력창과 연결된 데이터이기 때문에 추가할 때는 복제하여 사용
+        const copyInput = {...input};//{}=객체, input을 모두 복사해서 copyInput을 만들고
+        //[]=배열, nations를 모두 복사하고 마지막에 copyInput을 추가해서 새로운 배열을 만들고
+        const copyNations = [...nations, copyInput];//전개연산(spread op)
+        // const copyNations = nations.concat(copyInput);//연결명령
+        setNations(copyNations);//nations 덮어쓰기!
+        clearInput();//입력창 지워!
+    }, [input, nations]);
 
     return (
         <>
@@ -62,6 +101,42 @@ function Ex04() {
                 </div>
             </div>
             ))}
+
+            {/* 등록하기 위한 화면을 구현 */}
+            <div className="row mt-4">
+                <div className="col text-center">
+                    <h2>국가 등록</h2>
+                </div>
+            </div>
+            <div className="row mt-4">
+                <div className="col">
+                    <label>번호</label>
+                    <input type="text" className="form-control" name="no"
+                            value={input.no} onChange={e=>changeInput(e)} />
+                </div>
+            </div>
+            <div className="row mt-4">
+                <div className="col">
+                    <label>국가</label>
+                    <input type="text" className="form-control" name="name"
+                            value={input.name} onChange={e=>changeInput(e)} />
+                </div>
+            </div>
+            <div className="row mt-4">
+                <div className="col">
+                    <label>수도</label>
+                    <input type="text" className="form-control" name="capital"
+                            value={input.capital} onChange={e=>changeInput(e)}/>
+                </div>
+            </div>
+            <div className="row mt-4">
+                <div className="col">
+                    <button className="btn btn-success"
+                            onClick={e=>saveInput()}>저장</button>
+                    <button className="btn btn-danger ms-2"
+                            onClick={e=>clearInput(e)}>취소</button>
+                </div>
+            </div>
         </>
     );
 }
