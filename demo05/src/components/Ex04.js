@@ -65,7 +65,7 @@ function Ex04() {
     const saveInput = useCallback(()=>{
         //input은 입력창과 연결된 데이터이기 때문에 추가할 때는 복제하여 사용
         const copyInput = {...input};//{}=객체, input을 모두 복사해서 copyInput을 만들고
-        //[]=배열, nations를 모두 복사하고 마지막에 copyInput을 추가해서 새로운 배열을 만들고
+        //[]=배열, nations를 모두 복사하고 마지막에 copyInput을 추가해서 새로운 배열을 만든다
         const copyNations = [...nations, copyInput];//전개연산(spread op)
         // const copyNations = nations.concat(copyInput);//연결명령
         setNations(copyNations);//nations 덮어쓰기!
