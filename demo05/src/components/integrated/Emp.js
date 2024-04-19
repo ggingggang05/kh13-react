@@ -2,7 +2,8 @@ import Jumbotron from "../Jumbotron";
 import { useCallback, useEffect, useRef, useState } from "react";
 import axios from "axios"; //비동기 통신 전용 라이브러리
 import { Modal } from "bootstrap";
-
+import { FaPlus } from "react-icons/fa";
+import { HiArchiveBoxXMark } from "react-icons/hi2";
 
 function Emp() {
     //state
@@ -97,7 +98,7 @@ function Emp() {
             <div className="row mt-4">
                 <div className="col text-end">
                     <button className="btn btn-primary" onClick={e=>openModal()}>
-                        신규등록
+                        <FaPlus />신규등록
                     </button>
                 </div>
             </div>
@@ -126,7 +127,9 @@ function Emp() {
                                     <td>{emp.empSal}</td>
                                     <td>
                                         <button className="btn btn-danger"
-                                            onClick={e => deleteEmp(emp)}>삭제</button>
+                                            onClick={e => deleteEmp(emp)}>
+                                                <HiArchiveBoxXMark />삭제
+                                        </button>
                                     </td>
                                 </tr>
                             ))}
