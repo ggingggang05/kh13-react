@@ -8,6 +8,7 @@ import { Route, Routes } from 'react-router';
 import Ex03 from './components/Ex03';
 import Ex04 from './components/Ex04';
 import Ex05 from './components/Ex05';
+import Pocketmon from './components/integrated/Pocketmon';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
               <Route path='/ex03' element={<Ex03/>}/>
               <Route path='/ex04' element={<Ex04/>}/>
               <Route path='/ex05' element={<Ex05/>}/>
+              <Route path='/pocketmon' element={<Pocketmon/>}/>
             </Routes>
 
           </div>

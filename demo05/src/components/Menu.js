@@ -19,13 +19,19 @@ function Menu() {
                     <div className="collapse navbar-collapse" id="navbarColor03">
                         <ul className="navbar-nav me-auto">
                             <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">State 예제</a>
+                                <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">State예제</a>
                                 <div className="dropdown-menu">
                                     <NavLink className="dropdown-item" to="/ex01">예제1번</NavLink>
                                     <NavLink className="dropdown-item" to="/ex02">예제2번</NavLink>
                                     <NavLink className="dropdown-item" to="/ex03">예제3번</NavLink>
                                     <NavLink className="dropdown-item" to="/ex04">예제4번</NavLink>
                                     <NavLink className="dropdown-item" to="/ex05">예제5번</NavLink>
+                                </div>
+                            </li>
+                            <li className="nav-item dropdown">
+                                <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">통합예제</a>
+                                <div className="dropdown-menu">
+                                    <NavLink className="dropdown-item" to="/pocketmon">포켓몬스터</NavLink>
                                 </div>
                             </li>
                         </ul>
