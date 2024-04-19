@@ -39,7 +39,7 @@ const Pocketmon = () => {
     // : 시작하자마자 서버와 통신해서 pocketmons에 데이터를 넣는다*
     useEffect(() => {
         loadData();
-    }, [input]); //연관항목을 지움으로써 최초 1회만 실행 됨
+    }, []); //연관항목을 지움으로써 최초 1회만 실행 됨
 
     //포켓몬 등록
     //callback
