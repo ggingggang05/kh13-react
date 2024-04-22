@@ -124,7 +124,7 @@ const Student = () => {
         });
 
         //(+추가) 나중을 위해  target를 백업해둔다 (target은 수정버튼 누른 항목)
-        setBackup(target);
+        setBackup({...target});
 
         //2, recover를 고친다
         //- copy 중에서 target과 동일한 정보를 가진 항목을 찾아서 edit:true로 만든다
