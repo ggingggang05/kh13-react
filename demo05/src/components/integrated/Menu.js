@@ -105,7 +105,7 @@ const Menu = ()=>{
     }, [menus]);
 
     const saveEditMenu = useCallback(async(target)=>{
-        await axios.patch("/emp/", target);
+        await axios.patch("/menu/", target);
         loadData();
     },[menus]);
     const cancelEditMenu = useCallback((target) => {
@@ -185,19 +185,19 @@ const Menu = ()=>{
                                             <td>{menu.menuNo}</td>
                                             <td>
                                                 <input type="text" className="form-control" name="menuNameKor"
-                                                            value={menu.menuNameKor} onClick={e=>changeMenu(e, menu)}/>
+                                                            value={menu.menuNameKor} onChange={e=>changeMenu(e, menu)}/>
                                             </td>
                                             <td>
                                                 <input type="text" className="form-control" name="menuNameEng"
-                                                            value={menu.menuNameEng} onClick={e=>changeMenu(e, menu)}/>
+                                                            value={menu.menuNameEng} onChange={e=>changeMenu(e, menu)}/>
                                             </td>
                                             <td>
                                                 <input type="text" className="form-control" name="menuType"
-                                                            value={menu.menuType} onClick={e=>changeMenu(e, menu)}/>
+                                                            value={menu.menuType} onChange={e=>changeMenu(e, menu)}/>
                                             </td>
                                             <td>
                                                 <input type="number" className="form-control" name="menuPrice"
-                                                            value={menu.menuPrice} onClick={e=>changeMenu(e, menu)}/>
+                                                            value={menu.menuPrice} onChange={e=>changeMenu(e, menu)}/>
                                             </td>
                                             <td>
                                                 <FaCheck className="text-success me-2" 
