@@ -231,12 +231,12 @@ const Student = () => {
                     <table className='table table-striped'>
                         <thead className='text-center'>
                             <tr>
-                                <th>번호</th>
+                                <th width="100">번호</th>
                                 <th>이름</th>
                                 <th>국어</th>
                                 <th>영어</th>
                                 <th>수학</th>
-                                <th>관리</th>
+                                <th width="100">관리</th>
                             </tr>
                         </thead>
                         <tbody className='text-center'>
