@@ -4,6 +4,7 @@ import { HiArchiveBoxXMark } from "react-icons/hi2";
 import axios from "../utils/CustomAxios"; //내가 만든 파일로 임포트 시켜주기
 import { Modal } from 'bootstrap';
 import { FiEdit } from "react-icons/fi";
+import { FaCheck } from "react-icons/fa";
 import { TbPencilCancel } from "react-icons/tb";
 
 const Student = () => {
@@ -16,6 +17,7 @@ const Student = () => {
         englishScore:"",
         mathScore:""
     });
+    const [backup, setBackup] = useState(null); //수정 시 복원을 위한 백업
 
     //effect
     // useEffect(loadData, []);//loadData 함수를 최초 1회 실행하라!
@@ -110,10 +112,24 @@ const Student = () => {
     const editStudent = useCallback((target)=>{
         //1, students를 복제한다
         const copy = [...students];
-        //2, copy를 고친다
+        
+        //(+추가) 이미 수정 중인 항목이 있을 수 있으므로 해당 항목은 취소 처리가 필요
+        const recover = copy.map(student => {
+            if(student.edit === true) { //수정 중인 항목이 있다면
+                return {...backup, edit:false};//백업으로 갱신 + 수정모드 취소
+            }
+            else {
+                return {...student}; //그대로
+            }
+        });
+
+        //(+추가) 나중을 위해  target를 백업해둔다 (target은 수정버튼 누른 항목)
+        setBackup(target);
+
+        //2, recover를 고친다
         //- copy 중에서 target과 동일한 정보를 가진 항목을 찾아서 edit:true로 만든다
         //- 배열을 변환시켜야 하므로 map 함수를 사용한다
-        const copy2 = copy.map(student=>{
+        const copy2 = recover.map(student=>{
             //target : 수정버튼을 누른 학생정보, student: 현재 회차의 학생정보
             if(target.studentId === student.studentId){ //target이랑 student가 동일하다면 //원하는 정보일 경우
                 return {
@@ -140,7 +156,7 @@ const Student = () => {
             //target : 수정버튼을 누른 학생정보, student: 현재 회차의 학생정보
             if(target.studentId === student.studentId){ //target이랑 student가 동일하다면 //원하는 정보일 경우
                 return {
-                    ...student,//나머지 정보는 유지하되
+                    ...backup,//백업 정보를 전달
                     edit:false,//edit 관련된 처리를 추가하여 반환
                 };
             }
@@ -171,6 +187,14 @@ const Student = () => {
             }
         });
         setStudents(copy2);
+    }, [students]);
+
+    //수정된 결과를 저장 + 목록 갱신 + 수정모드 해제
+    const saveEditStudent = useCallback(async (target)=>{
+        //서버에 target을 전달하여 수정 처리
+        const resp = await axios.patch("/student/", target);// (주소, 데이터, 설정)
+        //목록 갱신
+        loadData();
     }, [students]);
 
 
@@ -239,7 +263,9 @@ const Student = () => {
                                                             value={student.mathScore} onChange={e =>changeStudent(e, student)}/> 
                                             </td>
                                             <td>
-                                            <TbPencilCancel className='text-danger' 
+                                                <FaCheck className="text-success me-2" 
+                                                    onClick={e=>saveEditStudent(student)}/>
+                                                <TbPencilCancel className='text-danger' 
                                                     onClick={e=>cancelEditStudent(student)}/>
                                             </td>
                                         </>
