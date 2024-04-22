@@ -32,7 +32,8 @@ function Menu() {
                                 <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">통합예제</a>
                                 <div className="dropdown-menu">
                                     <NavLink className="dropdown-item" to="/pocketmon">포켓몬스터</NavLink>
-                                    <NavLink className="dropdown-item" to="/emp">사원</NavLink>
+                                    <NavLink className="dropdown-item" to="/emp">사원관리</NavLink>
+                                    <NavLink className="dropdown-item" to="/student">학생정보</NavLink>
                                 </div>
                             </li>
                         </ul>
