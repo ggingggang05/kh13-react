@@ -34,6 +34,7 @@ function Menu() {
                                     <NavLink className="dropdown-item" to="/pocketmon">포켓몬스터</NavLink>
                                     <NavLink className="dropdown-item" to="/emp">사원관리</NavLink>
                                     <NavLink className="dropdown-item" to="/student">학생정보</NavLink>
+                                    <NavLink className="dropdown-item" to="/student2">학생정보(모듈화)</NavLink>
                                 </div>
                             </li>
                         </ul>
