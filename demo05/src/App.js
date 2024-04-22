@@ -12,6 +12,7 @@ import Pocketmon from './components/integrated/Pocketmon';
 import Emp from './components/integrated/Emp';
 import Student from './components/integrated/Student';
 import Student2 from './components/integrated/Student2';
+import FoodMenu from './components/integrated/Menu';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
               <Route path='/emp' element={<Emp/>}/>
               <Route path='/student' element={<Student/>}/>
               <Route path="/student2" element={<Student2/>}/>
+              <Route path='/menu' element={<FoodMenu/>}/>
             </Routes>
 
           </div>

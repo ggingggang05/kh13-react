@@ -11,7 +11,7 @@ function Menu() {
             <nav className="navbar navbar-expand-lg bg-light" data-bs-theme="light">
                 <div className="container-fluid">
                     {/* React에서는 페이지간 이동을 NavLink 태그로 한다 */}
-                    <NavLink className="navbar-brand" to="/">방정은네</NavLink>
+                    <NavLink className="navbar-brand" to="/">React</NavLink>
                     {/* <a className="navbar-brand" href="#">방정은네</a> */}
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -35,6 +35,7 @@ function Menu() {
                                     <NavLink className="dropdown-item" to="/emp">사원관리</NavLink>
                                     <NavLink className="dropdown-item" to="/student">학생정보</NavLink>
                                     <NavLink className="dropdown-item" to="/student2">학생정보(모듈화)</NavLink>
+                                    <NavLink className="dropdown-item" to="/menu">메뉴</NavLink>
                                 </div>
                             </li>
                         </ul>
