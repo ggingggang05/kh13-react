@@ -38,6 +38,9 @@ const RealLogin = () => {
         // console.log(resp.data);//memberId, memberLevel이 있음
         setLoginId(resp.data.memberId);
         setLoginLevel(resp.data.memberLevel);
+        //token은 이후의 axios요청에 포함시켜서 서버로 가져가야 한다
+        //→ 이 순간 이후로 모든 요청의 header에 Authorization이라는 이름으로 토큰을 첨부하겠다
+        axios.defaults.headers.common['Authorization'] = resp.data.token;
 
         //강제 페이지로 이동 - useNavigate() 
         navigator("/");//시작 페이지로 이동

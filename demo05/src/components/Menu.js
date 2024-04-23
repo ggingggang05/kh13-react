@@ -5,6 +5,7 @@ import {NavLink} from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { loginIdState, loginLevelState } from "./utils/RecoilData";
 import { useCallback, useMemo } from "react";
+import axios from "./utils/CustomAxios"; //개조 라이브러리
 
 //function
 function Menu() {
@@ -20,8 +21,10 @@ function Menu() {
 
     //callback
     const logout = useCallback(()=>{
+        //recoil 저장소에 대한 정리 + axios의 헤더 제거
         setLoginId('');
         setLoginLevel('');
+        delete axios.defaults.headers.common['Authorization'];
     }, [loginId, loginLevel]);
 
     return (
