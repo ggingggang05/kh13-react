@@ -9,8 +9,18 @@ const countState = atom({
     default : 0 //초기값
 });
 
+//로그인과 관련된 저장소 설정
+const loginIdState = atom({
+    key : 'loginIdState',
+    default : ''//초기값 빈문자열
+});
+const loginLevelState = atom({
+    key : 'loginLevelState',
+    default : ''
+});
+
 //default export는 하나밖에 할 수 없다
 //export default countState;
 
 //naming export는 여러 개 할 수 있다
-export {countState};
+export {countState , loginIdState, loginLevelState};

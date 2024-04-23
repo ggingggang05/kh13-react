@@ -2,9 +2,21 @@
 
 //import
 import {NavLink} from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { loginIdState, loginLevelState } from "./utils/RecoilData";
+import { useMemo } from "react";
 
 //function
 function Menu() {
+
+    //state
+    const [loginId, setLoginId] = useRecoilState(loginIdState);
+    const [loginLevel, setLoginLevel] = useRecoilState(loginLevelState);
+
+    //memo
+    const isLogin = useMemo(()=>{
+        return loginId.length > 0 && loginLevel.length > 0;  //아이디 존재 && 등급 존재
+    }, [loginId, loginLevel]);
 
     return (
         <>
@@ -42,9 +54,23 @@ function Menu() {
                                 <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Recoil</a>
                                 <div className="dropdown-menu">
                                     <NavLink className="dropdown-item" to="/count">카운트예제</NavLink>
+                                    <NavLink className="dropdown-item" to="/dummy">더미로그인</NavLink>
                                 </div>
                             </li>
                         </ul>
+
+                        {/* 이 부분을 로그인 여부에 따라 다르게 표시 */}
+                        <div className="d-flex text-light">
+                            { isLogin ? (
+                                <>
+                                    현재 로그인 중
+                                </>
+                            ) : (
+                                <>
+                                    현재 로그아웃 중
+                                </>
+                            )}
+                        </div>
                         <form className="d-flex">
                             <input className="form-control me-sm-2" type="search" placeholder="Search" />
                                 <button className="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
