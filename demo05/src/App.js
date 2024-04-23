@@ -15,6 +15,7 @@ import Student2 from './components/integrated/Student2';
 import FoodMenu from './components/integrated/Menu';
 import CountEx from './components/integrated/CountEx';
 import DummyLogin from './components/DummyLogin';
+import RealLogin from './components/RealLogin';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
               <Route path='/menu' element={<FoodMenu/>}/>
               <Route path='/count' element={<CountEx/>} />
               <Route path='/dummy' element={<DummyLogin />}/>
+              <Route path='/login' element={<RealLogin />}/>
             </Routes>
 
           </div>

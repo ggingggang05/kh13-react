@@ -4,7 +4,7 @@
 import {NavLink} from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { loginIdState, loginLevelState } from "./utils/RecoilData";
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 
 //function
 function Menu() {
@@ -16,6 +16,12 @@ function Menu() {
     //memo
     const isLogin = useMemo(()=>{
         return loginId.length > 0 && loginLevel.length > 0;  //아이디 존재 && 등급 존재
+    }, [loginId, loginLevel]);
+
+    //callback
+    const logout = useCallback(()=>{
+        setLoginId('');
+        setLoginLevel('');
     }, [loginId, loginLevel]);
 
     return (
@@ -55,12 +61,19 @@ function Menu() {
                                 <div className="dropdown-menu">
                                     <NavLink className="dropdown-item" to="/count">카운트예제</NavLink>
                                     <NavLink className="dropdown-item" to="/dummy">더미로그인</NavLink>
+                                    { isLogin ? (
+                                        <NavLink className="dropdown-item" to="#" 
+                                            onClick={e=>logout()}>진짜로그아웃</NavLink>
+                                    ):(
+                                        <NavLink className="dropdown-item" to="/login">진짜로그인</NavLink>
+                                    )}
+                                    
                                 </div>
                             </li>
                         </ul>
 
                         {/* 이 부분을 로그인 여부에 따라 다르게 표시 */}
-                        <div className="d-flex text-light">
+                        <div className="d-flex">
                             { isLogin ? (
                                 <>
                                     현재 로그인 중
