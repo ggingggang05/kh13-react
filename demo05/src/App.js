@@ -13,6 +13,7 @@ import Emp from './components/integrated/Emp';
 import Student from './components/integrated/Student';
 import Student2 from './components/integrated/Student2';
 import FoodMenu from './components/integrated/Menu';
+import CountEx from './components/integrated/CountEx';
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
               <Route path='/student' element={<Student/>}/>
               <Route path="/student2" element={<Student2/>}/>
               <Route path='/menu' element={<FoodMenu/>}/>
+              <Route path='/count' element={<CountEx/>} />
             </Routes>
 
           </div>

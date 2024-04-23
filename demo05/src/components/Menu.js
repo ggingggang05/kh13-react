@@ -38,6 +38,12 @@ function Menu() {
                                     <NavLink className="dropdown-item" to="/menu">메뉴</NavLink>
                                 </div>
                             </li>
+                            <li className="nav-item dropdown">
+                                <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Recoil</a>
+                                <div className="dropdown-menu">
+                                    <NavLink className="dropdown-item" to="/count">카운트예제</NavLink>
+                                </div>
+                            </li>
                         </ul>
                         <form className="d-flex">
                             <input className="form-control me-sm-2" type="search" placeholder="Search" />
