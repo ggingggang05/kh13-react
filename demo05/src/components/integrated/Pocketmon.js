@@ -1,6 +1,7 @@
 import Jumbotron from "../Jumbotron";
 import { useCallback, useEffect, useRef, useState } from 'react';
-import axios from "axios"; //비동기 통신 전용 라이브러리
+// import axios from "axios"; //비동기 통신 전용 라이브러리
+import axios from "../utils/CustomAxios";
 import { HiArchiveBoxXMark } from "react-icons/hi2";
 import { Modal } from "bootstrap";
 import { FaPlus } from "react-icons/fa";
@@ -61,7 +62,7 @@ const Pocketmon = () => {
         });*/
 
         axios({
-            url: "http://localhost:8080/pocketmon/",
+            url: "/pocketmon/",
             method: "post",
             data: input
         })
