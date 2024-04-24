@@ -18,7 +18,7 @@ import DummyLogin from './components/DummyLogin';
 import RealLogin from './components/RealLogin';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { loginIdState, loginLevelState, isLoginState } from './components/utils/RecoilData';
-import { useCallback, useEffect } from 'react';
+import { Suspense, useCallback, useEffect } from 'react';
 import axios from './components/utils/CustomAxios';
 
 function App() {
@@ -78,6 +78,8 @@ return (
                 - path를 통해 주소를 설정
                 - element를 통해 연결될 화면을 설정
             */}
+
+          {/* <Suspense  fallback={window.confirm("로딩중")}> */}
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/ex01' element={<Ex01 />} />
@@ -96,7 +98,7 @@ return (
             {isLogin && <Route path='/student' element={<Student />} />}
 
           </Routes>
-
+{/* </Suspense> */}
         </div>
       </div>
     </div>
