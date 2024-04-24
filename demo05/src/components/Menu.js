@@ -2,22 +2,20 @@
 
 //import
 import {NavLink} from "react-router-dom";
-import { useRecoilState } from "recoil";
-import { loginIdState, loginLevelState } from "./utils/RecoilData";
-import { useCallback, useMemo } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { isLoginState, loginIdState, loginLevelState } from "./utils/RecoilData";
+import { useCallback } from "react";
 import axios from "./utils/CustomAxios"; //개조 라이브러리
 
 //function
 function Menu() {
 
-    //state
+    //recoil state
     const [loginId, setLoginId] = useRecoilState(loginIdState);
     const [loginLevel, setLoginLevel] = useRecoilState(loginLevelState);
 
-    //memo
-    const isLogin = useMemo(()=>{
-        return loginId.length > 0 && loginLevel.length > 0;  //아이디 존재 && 등급 존재
-    }, [loginId, loginLevel]);
+    //recoil value
+    const isLogin = useRecoilValue(isLoginState);
 
     //callback
     const logout = useCallback(()=>{
@@ -25,6 +23,7 @@ function Menu() {
         setLoginId('');
         setLoginLevel('');
         delete axios.defaults.headers.common['Authorization'];
+        window.localStorage.removeItem("refreshToken"); //로그아웃이 되면 토큰 정보 삭제
     }, [loginId, loginLevel]);
 
     return (

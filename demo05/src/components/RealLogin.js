@@ -36,11 +36,15 @@ const RealLogin = () => {
 
         const resp = await axios.post("/member/login", member);
         // console.log(resp.data);//memberId, memberLevel이 있음
-        setLoginId(resp.data.memberId);
-        setLoginLevel(resp.data.memberLevel);
-        //token은 이후의 axios요청에 포함시켜서 서버로 가져가야 한다
+        setLoginId(resp.data.memberId); //3번-recoil 작업
+        setLoginLevel(resp.data.memberLevel); //3번-recoil 작업
+        //accessToken은 이후의 axios요청에 포함시켜서 서버로 가져가야 한다
         //→ 이 순간 이후로 모든 요청의 header에 Authorization이라는 이름으로 토큰을 첨부하겠다
-        axios.defaults.headers.common['Authorization'] = resp.data.token;
+        axios.defaults.headers.common['Authorization'] = resp.data.accessToken;//3번-액세스토큰 작업
+
+        //(+추가) refreshToken을 localStorage에 저장 //3번-리프레시토큰 작업
+        //refresh token이 필요한 상황 1. access token이 만료된 경우 2. 새로고침한 경우
+        window.localStorage.setItem("refreshToken", resp.data.refreshToken);
 
         //강제 페이지로 이동 - useNavigate() 
         navigator("/");//시작 페이지로 이동
