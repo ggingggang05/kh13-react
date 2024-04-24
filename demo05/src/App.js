@@ -16,8 +16,20 @@ import FoodMenu from './components/integrated/Menu';
 import CountEx from './components/integrated/CountEx';
 import DummyLogin from './components/DummyLogin';
 import RealLogin from './components/RealLogin';
+import { useRecoilState } from 'recoil';
+import { loginLevelState } from './components/utils/RecoilData';
+import { useMemo } from 'react';
 
 function App() {
+
+  //recoil state
+  const[loginId, setLoginId] = useRecoilState(loginIdState);
+  const[loginLevel, setLoginLevel] = useRecoilState(loginLevelState);
+  //memo
+  const isLogin = useMemo(()=>{
+    return loginId.length > 0 && loginLevel.length > 0;
+  }, [loginId, loginLevel]);
+
   return (
     <>
       {/* 메뉴 배치 */}
@@ -42,12 +54,14 @@ function App() {
               <Route path='/ex05' element={<Ex05/>}/>
               <Route path='/pocketmon' element={<Pocketmon/>}/>
               <Route path='/emp' element={<Emp/>}/>
-              <Route path='/student' element={<Student/>}/>
               <Route path="/student2" element={<Student2/>}/>
               <Route path='/menu' element={<FoodMenu/>}/>
               <Route path='/count' element={<CountEx/>} />
               <Route path='/dummy' element={<DummyLogin />}/>
               <Route path='/login' element={<RealLogin />}/>
+
+              {isLogin && <Route path='/student' element={<Student/>}/>}
+              
             </Routes>
 
           </div>

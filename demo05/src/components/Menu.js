@@ -53,8 +53,15 @@ function Menu() {
                                 <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">통합예제</a>
                                 <div className="dropdown-menu">
                                     <NavLink className="dropdown-item" to="/pocketmon">포켓몬스터</NavLink>
+                                    {/* 
+                                        화면을 조건부로 보여줄 때..
+                                        [1] 삼항연산자 - { 조건 ? (참일 때 화면) : (거짓일 때 화면)} //보여줄 화면이 둘. <c:choose>와 유사
+                                        [2] AND 연산자 - { 조건 && (참일 때 화면) } //보여줄 화면이 하나. <c:if>와 유사
+                                    */}
+                                    { isLogin && (
+                                        <NavLink className="dropdown-item" to="/student">학생정보</NavLink>
+                                    ) }
                                     <NavLink className="dropdown-item" to="/emp">사원관리</NavLink>
-                                    <NavLink className="dropdown-item" to="/student">학생정보</NavLink>
                                     <NavLink className="dropdown-item" to="/student2">학생정보(모듈화)</NavLink>
                                     <NavLink className="dropdown-item" to="/menu">메뉴</NavLink>
                                 </div>
