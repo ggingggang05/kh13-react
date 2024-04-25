@@ -32,8 +32,10 @@ const Book = () => {
     //- 페이지 번호가 증가하면 loadData를 부르도록 연결
     useEffect(()=>{
         loading.current = true;//로딩이 시작했음을 기록
+        console.log("로딩 시작");
         loadData();
-        loading.current = false;// 로딩이 종료했음을 기록 //flag 패턴
+        loading.current = false;//로딩이 종료했음을 기록//flag 패턴
+        console.log("로딩 종료");
     }, [page]);
 
     //////////////////////////////////////////////////////////////////////////////////////
