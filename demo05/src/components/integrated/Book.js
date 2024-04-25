@@ -6,8 +6,10 @@ const Book = ()=>{
 
     //state
     const [page, setPage] = useState(1);//현재 페이지 번호
-    const [size, setSize] = useState(100);
+    const [size, setSize] = useState(1000);//가져올 데이터 개수
     const [books, setBooks] = useState([]);
+    const [count, setCount] = useState(0);
+    const [last, setLast] = useState(false);
 
     //effect
     // useEffect(()=>{}, [books]);//books가 변경될 때마다 실행
@@ -19,13 +21,18 @@ const Book = ()=>{
     const loadData = useCallback(async () => {
         // const resp = await axios.get("/book/");
         const resp = await axios.get(`/book/page/${page}/size/${size}`);
-        setBooks(resp.data);
+        setBooks(resp.data.list);
+        setCount(resp.data.count);
+        setLast(resp.data.last);
     }, [books]);
     const loadMoreData = useCallback(async()=>{
         const nextPage = page + 1;
         setPage(nextPage);
         const resp = await axios.get(`/book/page/${nextPage}/size/${size}`);
-        setBooks([...books, ...resp.data]);//이어붙이기 //원래있던 배열 펼치고 새로 만든 배열 펼쳐서 하나로 합쳐 덮어쓰기
+        //setBooks(resp.data.list);//덮어쓰기
+        setBooks([...books, ...resp.data.list]);//이어붙이기 //원래있던 배열 펼치고 새로 만든 배열 펼쳐서 하나로 합쳐 덮어쓰기
+        setCount(resp.data.count);
+        setLast(resp.data.last);
     }, [books]);
 
     return (
@@ -67,9 +74,11 @@ const Book = ()=>{
                 {/* 더보기 버튼 */}
                 <div className="row mt-2">
                     <div className="col">
-                        <button className="btn btn-primary btn-lg w-100" onClick={e=>loadMoreData()}>
-                            더보기
-                        </button>
+                        {last === false &&
+                            <button className="btn btn-primary btn-lg w-100" onClick={e=>loadMoreData()}>
+                                더보기
+                            </button>
+                        }
                     </div>
                 </div>
             </div>
