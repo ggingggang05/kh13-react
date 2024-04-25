@@ -1,25 +1,48 @@
+//작성 순서
+//import → lazy import → Component → export 
+
 import logo from './logo.svg';
 import './App.css';
-import Menu from './components/Menu';
-import Home from './components/Home';
-import Ex01 from './components/Ex01';
-import Ex02 from './components/Ex02';
 import { Route, Routes } from 'react-router';
-import Ex03 from './components/Ex03';
-import Ex04 from './components/Ex04';
-import Ex05 from './components/Ex05';
-import Pocketmon from './components/integrated/Pocketmon';
-import Emp from './components/integrated/Emp';
-import Student from './components/integrated/Student';
-import Student2 from './components/integrated/Student2';
-import FoodMenu from './components/integrated/Menu';
-import CountEx from './components/integrated/CountEx';
-import DummyLogin from './components/DummyLogin';
-import RealLogin from './components/RealLogin';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { loginIdState, loginLevelState, isLoginState } from './components/utils/RecoilData';
-import { Suspense, useCallback, useEffect } from 'react';
+import { Suspense, lazy, useCallback, useEffect } from 'react';
 import axios from './components/utils/CustomAxios';
+import LoadingScreen from './components/LoadingScreen';
+
+// Suspense를 적요하기 위해서는 화면을 Lazy loading 해야한다 (필요한 순간에 불러오겠다)
+//import Home from './components/Home';
+const Home = lazy(()=>import("./components/Home"));
+// import Menu from './components/Menu';
+const Menu = lazy(()=>import("./components/Menu"));
+// import Ex01 from './components/Ex01';
+const Ex01 = lazy(()=>import("./components/Ex01"));
+// import Ex02 from './components/Ex02';
+const Ex02 = lazy(()=>import("./components/Ex02"));
+// import Ex03 from './components/Ex03';
+const Ex03 = lazy(()=>import("./components/Ex03"));
+// import Ex04 from './components/Ex04';
+const Ex04 = lazy(()=>import("./components/Ex04"));
+// import Ex05 from './components/Ex05';
+const Ex05 = lazy(()=>import("./components/Ex05"));
+// import Pocketmon from './components/integrated/Pocketmon';
+const Pocketmon = lazy(()=>import("./components/integrated/Pocketmon"));
+// import Emp from './components/integrated/Emp';
+const Emp = lazy(()=>import("./components/integrated/Emp"));
+// import Student from './components/integrated/Student';
+const Student = lazy(()=>import("./components/integrated/Student"));
+// import Student2 from './components/integrated/Student2';
+const Student2 = lazy(()=>import("./components/integrated/Student2"));
+// import FoodMenu from './components/integrated/Menu';
+const FoodMenu = lazy(()=>import("./components/integrated/Menu"));
+// import CountEx from './components/integrated/CountEx';
+const CountEx = lazy(()=>import("./components/integrated/CountEx"));
+// import DummyLogin from './components/DummyLogin';
+const DummyLogin = lazy(()=>import("./components/DummyLogin"));
+// import RealLogin from './components/RealLogin';
+const RealLogin = lazy(()=>import("./components/RealLogin"));
+const Book = lazy(()=>import("./components/integrated/Book"));
+
 
 function App() {
 
@@ -79,7 +102,7 @@ return (
                 - element를 통해 연결될 화면을 설정
             */}
 
-          {/* <Suspense  fallback={window.confirm("로딩중")}> */}
+          <Suspense fallback={<LoadingScreen/>}>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/ex01' element={<Ex01 />} />
@@ -94,11 +117,12 @@ return (
             <Route path='/count' element={<CountEx />} />
             <Route path='/dummy' element={<DummyLogin />} />
             <Route path='/login' element={<RealLogin />} />
+            <Route path='/book' element={<Book />}/>
 
             {isLogin && <Route path='/student' element={<Student />} />}
 
           </Routes>
-{/* </Suspense> */}
+          </Suspense>
         </div>
       </div>
     </div>

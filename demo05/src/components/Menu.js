@@ -63,6 +63,7 @@ function Menu() {
                                     <NavLink className="dropdown-item" to="/emp">사원관리</NavLink>
                                     <NavLink className="dropdown-item" to="/student2">학생정보(모듈화)</NavLink>
                                     <NavLink className="dropdown-item" to="/menu">메뉴</NavLink>
+                                    <NavLink className="dropdown-item" to="/book">도서</NavLink>
                                 </div>
                             </li>
                             <li className="nav-item dropdown">
