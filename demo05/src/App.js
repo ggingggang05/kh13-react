@@ -42,6 +42,7 @@ const DummyLogin = lazy(()=>import("./components/DummyLogin"));
 // import RealLogin from './components/RealLogin';
 const RealLogin = lazy(()=>import("./components/RealLogin"));
 const Book = lazy(()=>import("./components/integrated/Book"));
+const Test = lazy(()=>import("./components/integrated/Test"));
 
 
 function App() {
@@ -118,6 +119,7 @@ return (
             <Route path='/dummy' element={<DummyLogin />} />
             <Route path='/login' element={<RealLogin />} />
             <Route path='/book' element={<Book />}/>
+            <Route path='/test' element={<Test/>}/>
 
             {isLogin && <Route path='/student' element={<Student />} />}
 

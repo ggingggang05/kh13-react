@@ -46,6 +46,7 @@ function Menu() {
                                     <NavLink className="dropdown-item" to="/ex03">예제3번</NavLink>
                                     <NavLink className="dropdown-item" to="/ex04">예제4번</NavLink>
                                     <NavLink className="dropdown-item" to="/ex05">예제5번</NavLink>
+                                    <NavLink className="dropdown-item" to="/test">테스트</NavLink>
                                 </div>
                             </li>
                             <li className="nav-item dropdown">
